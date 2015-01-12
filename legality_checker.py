@@ -12,6 +12,9 @@ def isLegal(row1, col1, row2, col2):
     #there's nothing there!
     if piece==None:
         return False
+    #starting with the wrong color
+    if (isWTurn == True) and (piece[0] == 'b'): return False
+    if (isWTurn == False) and (piece[0] == 'w'): return False
     if board[row2][col2] != None: #check that it isn't taking own piece
         if (isWTurn == True) and (board[row2][col2][0] == 'w'): return False
         elif (isWTurn == False) and (board[row2][col2][0] == 'b'): return False
@@ -28,35 +31,20 @@ def isPawnLegal(row1, col1, row2, col2, drow, dcol):
             #moves 2 if it is on first move
             if (row1 == 6) and (board[row2][col2] == None) and (drow == -2 and dcol == 0\
                 and board[row1 - 1][col1] == None):
-                nextEnPassantCol = col2
                 return True
             #single move
             elif (board[row2][col2] == None) and (drow == -1) and (dcol == 0):
-                nextEnPassantCol = None
                 return True
             #captures piece
             elif (board[row2][col2] != None) and (drow == -1) and (abs(dcol) == 1):
-                nextEnPassantCol = None
-                return True
-            #en passant
-            elif (nextEnPassantCol != None) and (row1 == 3) and \
-                (col2 == nextEnPassantCol) and (abs(col2-col1) == 1) and (row2 == 2):
-                enPassant = True
                 return True
         else:
             if (row1 == 1) and (board[row2][col2] == None) and (drow == 2) and (dcol == 0)\
                 and (board[row1 + 1][col2] == None):
-                nextEnPassantCol = col2
                 return True
             elif (board[row2][col2] == None) and (drow == 1) and (dcol == 0):
-                nextEnPassantCol = None
                 return True
             elif (board[row2][col2] != None) and (drow == 1) and (abs(dcol) == 1):
-                nextEnPassantCol = None
-                return True
-            elif (nextEnPassantCol != None) and (row1 == 4) and \
-                (col2 == nextEnPassantCol) and (abs(col2-col1) == 1) and (row2 == 5):
-                enPassant = True
                 return True
         return False
 
@@ -164,29 +152,31 @@ def isQueenLegal(row1, col1, drow, dcol):
         return False
 
 def checkForEndGame():
-        #checks if king has been captured
-        wKing=bKing=False
-        for row in xrange(rows):
-            for col in xrange(cols):
-                if board[row][col]=='wKing':
-                    wKing=True
-                if board[row][col]=='bKing':
-                    bKing=True
-        if wKing==False:
-            isGameOver=True
-            winner='black'
-            return
-        elif bKing==False:
-            isGameOver=True
-            winner='white'
-            return
+    #checks if king has been captured
+    wKing=bKing=False
+    for row in xrange(rows):
+        for col in xrange(cols):
+            if board[row][col]=='wKing':
+                wKing=True
+            if board[row][col]=='bKing':
+                bKing=True
+    if wKing==False:
+        isGameOver=True
+        winner='black'
+        return
+    elif bKing==False:
+        isGameOver=True
+        winner='white'
+        return
 
-def changePlayers():
-        if isWTurn==True:
-            isWTurn=False
-        else: isWTurn=True
+def performMove(row1, col1, row2, col2):
+    #moves piece to target
+    board[row2][col2] = board[row1][col1]
+    board[row1][col1] = None #empties source
+    #change players
+    isWTurn = !isWTurn
 
-def init(self):
+def init():
         board=[['bRook1','bKnight1','bBishop1','bQueen1',
                     'bKing','bBishop2','bKnight2','bRook2',],
                     ['bPawn1','bPawn2','bPawn3','bPawn4',
@@ -210,8 +200,6 @@ def init(self):
         highlightedRow=None
         selectedRow=None
         selectedCol=None
-        nextEnPassantCol=None
-        enPassant=False
         isBlackChecked=isWhiteChecked=False
         rows=cols=8
         redrawAll()
