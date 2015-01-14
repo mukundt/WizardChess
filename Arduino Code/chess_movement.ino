@@ -11,6 +11,7 @@
 #include "RL_Stepper.h"
 
 #define STEPS_SQUARE 200
+#define STEPS_HALF_SQUARE (STEPS_SQUARE / 2)
 
 Stepper row_motor(row_step_pin, row_direction_pin, row_enable_pin);
 Stepper col_motor(col_step_pin, col_direction_pin, col_enable_pin);
@@ -24,23 +25,37 @@ void loop()
 {
     if (Serial.available())
     {
-        int row_move = Serial.parseInt();
-        int col_move = Serial.parseInt();
+        int row1 = Serial.parseInt();
+        int col1 = Serial.parseInt();
+        int row2 = Serial.parseInt();
+        int col2 = Serial.parseInt();
+
+
+        int row_move = row2 - row1;
+        int col_move = col2 - col1;
+
+        row_motor.move_absolute(row1 * STEPS_SQUARE);
+        col_motor.move_absolute(col1 * STEPS_SQUARE);
     }
 
-    if (abs(row_move) == abs(col_move)) // Diagonal
+    if (row_move == 0 || col_move == 0) // Straight
+    {
+        move_straight(row_move, col_move);
+    }
+
+    else if (abs(row_move) == abs(col_move)) // Diagonal
     {
         move_diagonal(row_move, col_move);
     }
 
-    else // Straight or Knight
+    else // Knight
     {
-        move_straight_knight(row_move, col_move);
+        move_knight(row_move, col_move);
     }
 
 }
 
-void move_straight_knight(int row_move, int col_move)
+void move_straight(int row_move, int col_move)
 {
     row_motor.move_relative(row_move * STEPS_SQUARE);
     col_motor.move_relative(col_move * STEPS_SQUARE);
@@ -58,6 +73,19 @@ void move_diagonal(int row_move, int col_move)
         col_motor.single_step(col_sign);
     }
 
+}
+
+void move_knight(int row_move, int col_move)
+{
+    // Move to corner of square, since knight must move along edges
+    row_motor.move_relative(-STEPS_HALF_SQUARE);
+    col_motor.move_relative(-STEPS_HALF_SQUARE);
+
+    row_motor.move_relative(row_move * STEPS_SQUARE);
+    col_motor.move_relative(col_move * STEPS_SQUARE);
+
+    row_motor.move_relative(STEPS_HALF_SQUARE);
+    col_motor.move_relative(STEPS_HALF_SQUARE);
 }
 
 int sign(int x) { return x < 0 ? -1 : 1; }

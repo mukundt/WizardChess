@@ -252,5 +252,5 @@ while True:
     # perform move software-side (including changing players)
     performMove(row1, col1, row2, col2)
     # perform move hardware-side
-    ser.write(str(row2 - row1) + " " + str(col2 - col1)) # Arduino can deduce whether knight or not
+    ser.write(str(row1) + " " + str(col1) + " " + str(row2) + " " + str(col2))
     # check for check(mate)?
