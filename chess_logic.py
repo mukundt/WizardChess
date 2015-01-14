@@ -17,11 +17,11 @@ def isLegal(row1, col1, row2, col2):
         if (isWTurn == True) and (board[row2][col2][0] == 'w'): return False
         elif (isWTurn == False) and (board[row2][col2][0] == 'b'): return False
     if "Pawn" in piece: return isPawnLegal(row1,col1,row2,col2,drow,dcol)
-        elif "Knight" in piece: return isKnightLegal(drow,dcol)
-        elif "Bishop" in piece: return isBishopLegal(row1,col1,drow,dcol)
-        elif "Rook" in piece: return isRookLegal(row1,col1,drow,dcol)
-        elif "Queen" in piece: return isQueenLegal(row1,col1,drow,dcol)
-        elif "King" in piece: return isKingLegal(drow,dcol,row2,col2)
+    elif "Knight" in piece: return isKnightLegal(drow,dcol)
+    elif "Bishop" in piece: return isBishopLegal(row1,col1,drow,dcol)
+    elif "Rook" in piece: return isRookLegal(row1,col1,drow,dcol)
+    elif "Queen" in piece: return isQueenLegal(row1,col1,drow,dcol)
+    elif "King" in piece: return isKingLegal(drow,dcol,row2,col2)
 
 def isPawnLegal(row1, col1, row2, col2, drow, dcol):
         #have to en passant in the next turn

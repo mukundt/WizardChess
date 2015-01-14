@@ -1,6 +1,6 @@
 /*
 
-1) Read two integers from serial
+1) Read four integers from serial
 2) Determine whether straight, diagonal, or knight
 3) Use absolute stepping to get to origin square
 4) Use relative stepping to get to target square (w/ appropriate movement)
