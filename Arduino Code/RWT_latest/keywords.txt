@@ -1,0 +1,32 @@
+#######################################
+# Syntax Coloring Map                 #
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)                #
+#######################################
+
+Stepper KEYWORD1
+Trigger KEYWORD2
+
+#######################################
+# Methods and Functions (KEYWORD2)    #
+#######################################
+
+set_delay	KEYWORD2
+set_dwell	KEYWORD2
+set_count	KEYWORD2
+invert_direction	KEYWORD2
+move_relative	KEYWORD2
+move_absolute	KEYWORD2
+disable	KEYWORD2
+enable	KEYWORD2
+get_count	KEYWORD2
+is_enabled	KEYWORD2
+set_delay	KEYWORD2
+set_dwell	KEYWORD2
+squeeze	KEYWORD2
+release	KEYWORD2
+single_shot	KEYWORD2
+burst	KEYWORD2
+is_squeezed	KEYWORD2
