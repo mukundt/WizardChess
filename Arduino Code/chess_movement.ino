@@ -1,10 +1,15 @@
 /*
 
-1) Read four integers from serial
+1) Read five integers from serial (pos1, pos2, kill_target)
 2) Determine whether straight, diagonal, or knight
 3) Use absolute stepping to get to origin square
 4) Use relative stepping to get to target square (w/ appropriate movement)
 5) [Send signal back to serial]
+
+Improvements:
+
+1) Move piece off at better time
+2) Make dead pieces form a line
 
 */
 
@@ -29,7 +34,12 @@ void loop()
         int col1 = Serial.parseInt();
         int row2 = Serial.parseInt();
         int col2 = Serial.parseInt();
+        int kill_target = Serial.parseInt();
 
+        if (kill_target)
+        {
+            kill_piece(row2, col2);
+        }
 
         int row_move = row2 - row1;
         int col_move = col2 - col1;
@@ -86,6 +96,12 @@ void move_knight(int row_move, int col_move)
 
     row_motor.move_relative(STEPS_HALF_SQUARE);
     col_motor.move_relative(STEPS_HALF_SQUARE);
+}
+
+void kill_piece(int row, int col)
+{
+    col_motor.move_relative(-STEPS_HALF_SQUARE);
+    row_motor.move_absolute(0);
 }
 
 int sign(int x) { return x < 0 ? -1 : 1; }
