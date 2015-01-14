@@ -106,48 +106,48 @@ def isQueenLegal(row1, col1, drow, dcol):
         elif isBishopLegal(row1,col1,drow,dcol): return True
         else: return False
 
-    def isKingLegal(drow, dcol, row2, col2):
-        if abs(drow)>1 or abs(dcol)>1:
-            return False
-        if check(row2,col2)==True:
-            return False
-        else: return True
-
-    def check(row2, col2):
-        for row in xrange(rows):
-            for col in xrange(cols):
-                #checks legal moves for all of the pieces
-                if board[row][col]!=None:
-                    if "King" not in board[row][col]:
-                        #checking for black pieces
-                        if isWTurn and board[row][col][0]!='w':
-                            checkForLegalMovesB(row,col)
-                            legalMoves=copy.deepcopy(legalMovesB)
-                            if (row2,col2) in legalMoves:
-                                return True
-                        elif isWTurn==False and board[row][col][0]!='b':
-                            checkForLegalMovesB(row,col)
-                            legalMoves=copy.deepcopy(legalMovesB)
-                            if (row2,col2) in legalMoves:
-                                return True
-                    #if a pawn is in a position to capture the king
-                    if isWTurn:
-                        if row2>0:
-                            if col2>0 and board[row2-1][col2-1]!=None:
-                                if "bPawn" in board[row2-1][col2-1]:
-                                    return True
-                            if col2<7 and board[row2-1][col2+1]!=None:
-                                if "bPawn" in board[row2-1][col2+1]:
-                                    return True
-                    else:
-                        if row2<7:
-                            if col2>0 and board[row2+1][col2-1]!=None:
-                                if "wPawn" in board[row2+1][col2-1]:
-                                    return True
-                            if col2<7 and board[row2+1][col2+1]!=None:
-                                if "wPawn" in board[row2+1][col2+1]:
-                                    return True
+def isKingLegal(drow, dcol, row2, col2):
+    if abs(drow)>1 or abs(dcol)>1:
         return False
+    if check(row2,col2)==True:
+        return False
+    else: return True
+
+def check(row2, col2):
+    for row in xrange(rows):
+        for col in xrange(cols):
+            #checks legal moves for all of the pieces
+            if board[row][col]!=None:
+                if "King" not in board[row][col]:
+                    #checking for black pieces
+                    if isWTurn and board[row][col][0]!='w':
+                        checkForLegalMovesB(row,col)
+                        legalMoves=copy.deepcopy(legalMovesB)
+                        if (row2,col2) in legalMoves:
+                            return True
+                    elif isWTurn==False and board[row][col][0]!='b':
+                        checkForLegalMovesB(row,col)
+                        legalMoves=copy.deepcopy(legalMovesB)
+                        if (row2,col2) in legalMoves:
+                            return True
+                #if a pawn is in a position to capture the king
+                if isWTurn:
+                    if row2>0:
+                        if col2>0 and board[row2-1][col2-1]!=None:
+                            if "bPawn" in board[row2-1][col2-1]:
+                                return True
+                        if col2<7 and board[row2-1][col2+1]!=None:
+                            if "bPawn" in board[row2-1][col2+1]:
+                                return True
+                else:
+                    if row2<7:
+                        if col2>0 and board[row2+1][col2-1]!=None:
+                            if "wPawn" in board[row2+1][col2-1]:
+                                return True
+                        if col2<7 and board[row2+1][col2+1]!=None:
+                            if "wPawn" in board[row2+1][col2+1]:
+                                return True
+    return False
 
 def checkForEndGame():
     #checks if king has been captured
@@ -172,7 +172,7 @@ def performMove(row1, col1, row2, col2):
     board[row2][col2] = board[row1][col1]
     board[row1][col1] = None #empties source
     #change players
-    isWTurn = !isWTurn
+    isWTurn = not isWTurn
 
 def init():
         board=[['bRook1','bKnight1','bBishop1','bQueen1',
@@ -188,8 +188,6 @@ def init():
                     ['wRook1','wKnight1','wBishop1','wQueen1',
                     'wKing','wBishop2','wKnight2','wRook2',]]
         isGameOver=False
-        scene.userzoom=True
-        scene.userspin=True
         wQueenCount=1
         bQueenCount=1
         isWTurn=True
@@ -200,7 +198,6 @@ def init():
         selectedCol=None
         isBlackChecked=isWhiteChecked=False
         rows=cols=8
-        redrawAll()
 
 
 def wordToCol(word):
