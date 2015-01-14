@@ -1,4 +1,5 @@
 import sys
+import serial
 
 def isLegal(row1, col1, row2, col2):
     #(row1,col1) where piece is starting
@@ -222,8 +223,12 @@ def wordToCol(word):
     else:
         return -1
 
+# Initialize chess software
 init()
+# Initialize serial connection
+ser = serial.Serial('/dev/ttyACM0', 9600) # re-check serial port
 
+# Continuously listen for voice input!
 while True:
     input_string = sys.stdin.readline()
     print "Decoder received: " + input_string
@@ -247,4 +252,5 @@ while True:
     # perform move software-side (including changing players)
     performMove(row1, col1, row2, col2)
     # perform move hardware-side
-    # check for check(mate)
+    ser.write(str(row2 - row1) + str(col2 - col1)) # Arduino can deduce whether knight or not
+    # check for check(mate)?
