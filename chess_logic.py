@@ -249,5 +249,6 @@ while True:
     # perform move software-side (including changing players)
     performMove(row1, col1, row2, col2)
     # perform move hardware-side
-    ser.write(str(row1) + " " + str(col1) + " " + str(row2) + " " + str(col2))
+    kill_piece = 0 if (board[row2][col2] == None) else 1
+    ser.write(str(row1) + " " + str(col1) + " " + str(row2) + " " + str(col2) + " " + str(kill_piece))
     # check for check(mate)?
