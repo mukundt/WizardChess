@@ -221,7 +221,7 @@ board=[['bRook1','bKnight1','bBishop1','bQueen1',
              'wPawn5','wPawn6','wPawn7','wPawn8'],
             ['wRook1','wKnight1','wBishop1','wQueen1',
             'wKing','wBishop2','wKnight2','wRook2']]
-init()
+#init()
 # Initialize serial connection
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
@@ -244,12 +244,12 @@ while True:
         continue
 
     row1, col1, row2, col2 = int(input_words[1]) - 1, wordToCol(input_words[0]), int(input_words[4]) - 1, wordToCol(input_words[3])
-    if not isLegal(row1, col1, row2, col2, board):
-        print "Illegal move!"
-        continue
+    #if not isLegal(row1, col1, row2, col2, board):
+    #   print "Illegal move!"
+    #    continue
     # perform move software-side (including changing players)
-    performMove(row1, col1, row2, col2)
+    #performMove(row1, col1, row2, col2)
     # perform move hardware-side
-    kill_piece = 0 if (board[row2][col2] == None) else 1
-    ser.write(str(row1) + " " + str(col1) + " " + str(row2) + " " + str(col2) + " " + str(kill_piece))
+    #kill_piece = 0 if (board[row2][col2] == None) else 1
+    ser.write(str(row1) + " " + str(col1) + " " + str(row2) + " " + str(col2) + " " + str(0))
     # check for check(mate)?
