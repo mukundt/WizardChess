@@ -59,10 +59,6 @@ void setup()
 
     digitalWrite(magnet_pin, HIGH);
     calibrate();
-    move_straight(7,0);
-     move_straight(0,7);
-    move_straight(-7,0);
-    move_straight(0,-7);
 }
 
 void loop()

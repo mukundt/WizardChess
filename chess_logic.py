@@ -175,29 +175,29 @@ def performMove(row1, col1, row2, col2):
     isWTurn = not isWTurn
 
 def init():
-        board=[['bRook1','bKnight1','bBishop1','bQueen1',
-                    'bKing','bBishop2','bKnight2','bRook2',],
-                    ['bPawn1','bPawn2','bPawn3','bPawn4',
-                     'bPawn5','bPawn6','bPawn7','bPawn8'],
-                    [None,None,None,None,None,None,None,None],
-                    [None,None,None,None,None,None,None,None],
-                    [None,None,None,None,None,None,None,None],
-                    [None,None,None,None,None,None,None,None],
-                    ['wPawn1','wPawn2','wPawn3','wPawn4',
-                     'wPawn5','wPawn6','wPawn7','wPawn8'],
-                    ['wRook1','wKnight1','wBishop1','wQueen1',
-                    'wKing','wBishop2','wKnight2','wRook2',]]
-        isGameOver=False
-        wQueenCount=1
-        bQueenCount=1
-        isWTurn=True
-        isPieceSelected=False
-        highlightedCol=None
-        highlightedRow=None
-        selectedRow=None
-        selectedCol=None
-        isBlackChecked=isWhiteChecked=False
-        rows=cols=8
+    board=[['bRook1','bKnight1','bBishop1','bQueen1',
+                'bKing','bBishop2','bKnight2','bRook2',],
+                ['bPawn1','bPawn2','bPawn3','bPawn4',
+                 'bPawn5','bPawn6','bPawn7','bPawn8'],
+                [None,None,None,None,None,None,None,None],
+                [None,None,None,None,None,None,None,None],
+                [None,None,None,None,None,None,None,None],
+                [None,None,None,None,None,None,None,None],
+                ['wPawn1','wPawn2','wPawn3','wPawn4',
+                 'wPawn5','wPawn6','wPawn7','wPawn8'],
+                ['wRook1','wKnight1','wBishop1','wQueen1',
+                'wKing','wBishop2','wKnight2','wRook2',]]
+    isGameOver=False
+    wQueenCount=1
+    bQueenCount=1
+    isWTurn=True
+    isPieceSelected=False
+    highlightedCol=None
+    highlightedRow=None
+    selectedRow=None
+    selectedCol=None
+    isBlackChecked=isWhiteChecked=False
+    rows=cols=8
 
 
 def wordToCol(word):
