@@ -237,7 +237,7 @@ while True:
 
     row1, col1, row2, col2 = int(input_words[1]) - 1, wordToCol(input_words[0]), int(input_words[4]) - 1, wordToCol(input_words[3])
     if not isLegal(row1, col1, row2, col2, board):
-       print "Illegal move!"
+        print "Illegal move!"
         continue
     # perform move software-side (including changing players)
     performMove(row1, col1, row2, col2)
