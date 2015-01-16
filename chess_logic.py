@@ -1,7 +1,7 @@
 import sys
 import serial
 
-def isLegal(row1, col1, row2, col2):
+def isLegal(row1, col1, row2, col2, board):
     #(row1,col1) where piece is starting
     #(row2,col2) where piece is going
     piece = board[row1][col1]
@@ -175,18 +175,6 @@ def performMove(row1, col1, row2, col2):
     isWTurn = not isWTurn
 
 def init():
-    board=[['bRook1','bKnight1','bBishop1','bQueen1',
-                'bKing','bBishop2','bKnight2','bRook2',],
-                ['bPawn1','bPawn2','bPawn3','bPawn4',
-                 'bPawn5','bPawn6','bPawn7','bPawn8'],
-                [None,None,None,None,None,None,None,None],
-                [None,None,None,None,None,None,None,None],
-                [None,None,None,None,None,None,None,None],
-                [None,None,None,None,None,None,None,None],
-                ['wPawn1','wPawn2','wPawn3','wPawn4',
-                 'wPawn5','wPawn6','wPawn7','wPawn8'],
-                ['wRook1','wKnight1','wBishop1','wQueen1',
-                'wKing','wBishop2','wKnight2','wRook2']]
     isGameOver=False
     wQueenCount=1
     bQueenCount=1
@@ -221,6 +209,18 @@ def wordToCol(word):
         return -1
 
 # Initialize chess software
+board=[['bRook1','bKnight1','bBishop1','bQueen1',
+            'bKing','bBishop2','bKnight2','bRook2',],
+            ['bPawn1','bPawn2','bPawn3','bPawn4',
+             'bPawn5','bPawn6','bPawn7','bPawn8'],
+            [None,None,None,None,None,None,None,None],
+            [None,None,None,None,None,None,None,None],
+            [None,None,None,None,None,None,None,None],
+            [None,None,None,None,None,None,None,None],
+            ['wPawn1','wPawn2','wPawn3','wPawn4',
+             'wPawn5','wPawn6','wPawn7','wPawn8'],
+            ['wRook1','wKnight1','wBishop1','wQueen1',
+            'wKing','wBishop2','wKnight2','wRook2']]
 init()
 # Initialize serial connection
 ser = serial.Serial('/dev/ttyACM0', 9600)
@@ -244,7 +244,7 @@ while True:
         continue
 
     row1, col1, row2, col2 = int(input_words[1]) - 1, wordToCol(input_words[0]), int(input_words[4]) - 1, wordToCol(input_words[3])
-    if not isLegal(row1, col1, row2, col2):
+    if not isLegal(row1, col1, row2, col2, board):
         print "Illegal move!"
         continue
     # perform move software-side (including changing players)
