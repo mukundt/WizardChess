@@ -186,7 +186,7 @@ def init():
                 ['wPawn1','wPawn2','wPawn3','wPawn4',
                  'wPawn5','wPawn6','wPawn7','wPawn8'],
                 ['wRook1','wKnight1','wBishop1','wQueen1',
-                'wKing','wBishop2','wKnight2','wRook2',]]
+                'wKing','wBishop2','wKnight2','wRook2']]
     isGameOver=False
     wQueenCount=1
     bQueenCount=1
