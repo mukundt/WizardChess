@@ -57,7 +57,6 @@ void setup()
     digitalWrite(limit_row, HIGH);
     digitalWrite(limit_col, HIGH);
 
-    digitalWrite(magnet_pin, HIGH);
     calibrate();
 }
 
