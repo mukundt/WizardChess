@@ -223,7 +223,7 @@ def wordToCol(word):
 # Initialize chess software
 init()
 # Initialize serial connection
-ser = serial.Serial('/dev/ttyACM0', 9600) # re-check serial port
+ser = serial.Serial('/dev/ttyACM0', 9600)
 
 # Continuously listen for voice input!
 while True:
