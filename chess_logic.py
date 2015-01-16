@@ -236,12 +236,12 @@ while True:
         continue
 
     row1, col1, row2, col2 = int(input_words[1]) - 1, wordToCol(input_words[0]), int(input_words[4]) - 1, wordToCol(input_words[3])
-    #if not isLegal(row1, col1, row2, col2, board):
-    #   print "Illegal move!"
-    #    continue
+    if not isLegal(row1, col1, row2, col2, board):
+       print "Illegal move!"
+        continue
     # perform move software-side (including changing players)
-    #performMove(row1, col1, row2, col2)
+    performMove(row1, col1, row2, col2)
     # perform move hardware-side
-    #kill_piece = 0 if (board[row2][col2] == None) else 1
-    ser.write(str(row1) + " " + str(col1) + " " + str(row2) + " " + str(col2) + " " + str(0))
+    kill_piece = 0 if (board[row2][col2] == None) else 1
+    ser.write(str(row1) + " " + str(col1) + " " + str(row2) + " " + str(col2) + " " + str(kill_piece))
     # check for check(mate)?
