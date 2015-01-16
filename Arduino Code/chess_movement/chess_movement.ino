@@ -15,7 +15,7 @@ Improvements:
 
 #include "RL_Stepper.h"
 
-#define STEPS_SQUARE 200
+#define STEPS_SQUARE 400
 #define STEPS_HALF_SQUARE (STEPS_SQUARE / 2)
 
 #define row_step_pin 5
@@ -26,7 +26,7 @@ Improvements:
 #define col_direction_pin 2
 #define col_enable_pin 14
 
-#define motor_delay 3
+#define motor_delay 2
 
 #define magnet_pin 10
 
@@ -57,7 +57,12 @@ void setup()
     digitalWrite(limit_row, HIGH);
     digitalWrite(limit_col, HIGH);
 
+    digitalWrite(magnet_pin, HIGH);
     calibrate();
+    move_straight(7,0);
+     move_straight(0,7);
+    move_straight(-7,0);
+    move_straight(0,-7);
 }
 
 void loop()
@@ -160,20 +165,19 @@ void kill_piece(int row, int col)
 void calibrate()
 {
     // Hit both limit switches, then move to center of Azkaban 1!
+    
     while (digitalRead(limit_row) == HIGH)
     {
         row_motor.move_relative(-1);
     }
-
+    row_motor.move_relative(475);
+    row_motor.set_count(0);
+    
     while (digitalRead(limit_col) == HIGH)
     {
         col_motor.move_relative(-1);
     }
-
-    row_motor.move_relative(600);
-    col_motor.move_relative(600);
-
-    row_motor.set_count(0);
+    col_motor.move_relative(525);
     col_motor.set_count(0);
 }
 
