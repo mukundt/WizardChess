@@ -1,7 +1,7 @@
 import sys
-import serial
+#import serial
 
-def isLegal(row1, col1, row2, col2, board):
+def isLegal(row1, col1, row2, col2):
     #(row1,col1) where piece is starting
     #(row2,col2) where piece is going
     piece = board[row1][col1]
@@ -172,6 +172,7 @@ def performMove(row1, col1, row2, col2):
     board[row2][col2] = board[row1][col1]
     board[row1][col1] = None #empties source
     #change players
+    global isWTurn
     isWTurn = not isWTurn
 
 def wordToCol(word):
@@ -207,6 +208,14 @@ board = [['bRook1','bKnight1','bBishop1','bQueen1',
                  'wPawn5','wPawn6','wPawn7','wPawn8'],
                 ['wRook1','wKnight1','wBishop1','wQueen1',
                 'wKing','wBishop2','wKnight2','wRook2']]
+#board = [['bRook1', None, None, None, 'bKing', None, 'bKnight2', None],
+#        [None,None,None,'bPawn4',None,None,None,None],
+#        [None,None,None,None,None,None,None,None],
+#        [None,None,None,None,None,None,None,None],
+#        [None,None,None,None,None,None,None,None],
+#        [None,None,None,None,None,None,None,None],
+#        ['wPawn1',None,None,None,None,None,None,None],
+#        [None, None, 'wBishop1', 'wQueen1', 'wKing', None, None, None]]
 isGameOver=False
 isWTurn=True
 isBlackChecked=False
