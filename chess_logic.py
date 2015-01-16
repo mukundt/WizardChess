@@ -239,14 +239,11 @@ while True:
     for item in input_words:
         print "item = " + item
 
-    if len(input_words) == 4:
-        row1, col1, row2, col2 = int(input_words[1]) - 1, wordToCol(input_words[0]), int(input_words[3]) - 1, wordToCol(input_words[2])
-
-    elif len(input_words) == 5:
-        row1, col1, row2, col2 = int(input_words[1]) - 1, wordToCol(input_words[0]), int(input_words[4]) - 1, wordToCol(input_words[3])
-    else:
+    if len(input_words) != 5:
         print "Bad input!"
         continue
+
+    row1, col1, row2, col2 = int(input_words[1]) - 1, wordToCol(input_words[0]), int(input_words[4]) - 1, wordToCol(input_words[3])
     #if not isLegal(row1, col1, row2, col2):
      #   print "Illegal move!"
       #  continue
