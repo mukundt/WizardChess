@@ -174,30 +174,9 @@ def performMove(row1, col1, row2, col2):
     #change players
     isWTurn = not isWTurn
 
-def init():
-    global board=[['bRook1','bKnight1','bBishop1','bQueen1',
-                'bKing','bBishop2','bKnight2','bRook2',],
-                ['bPawn1','bPawn2','bPawn3','bPawn4',
-                 'bPawn5','bPawn6','bPawn7','bPawn8'],
-                [None,None,None,None,None,None,None,None],
-                [None,None,None,None,None,None,None,None],
-                [None,None,None,None,None,None,None,None],
-                [None,None,None,None,None,None,None,None],
-                ['wPawn1','wPawn2','wPawn3','wPawn4',
-                 'wPawn5','wPawn6','wPawn7','wPawn8'],
-                ['wRook1','wKnight1','wBishop1','wQueen1',
-                'wKing','wBishop2','wKnight2','wRook2']]
-    global isGameOver=False
-    global isWTurn=True
-    global isPieceSelected=False
-    global highlightedCol=None
-    global highlightedRow=None
-    global selectedRow=None
-    global selectedCol=None
-    global isBlackChecked=False
-    global isWhiteChecked=False
-    global rows=8
-    global cols=8
+
+
+
 
 
 def wordToCol(word):
@@ -221,7 +200,24 @@ def wordToCol(word):
         return -1
 
 # Initialize chess software
-init()
+board = [['bRook1','bKnight1','bBishop1','bQueen1',
+                'bKing','bBishop2','bKnight2','bRook2',],
+                ['bPawn1','bPawn2','bPawn3','bPawn4',
+                 'bPawn5','bPawn6','bPawn7','bPawn8'],
+                [None,None,None,None,None,None,None,None],
+                [None,None,None,None,None,None,None,None],
+                [None,None,None,None,None,None,None,None],
+                [None,None,None,None,None,None,None,None],
+                ['wPawn1','wPawn2','wPawn3','wPawn4',
+                 'wPawn5','wPawn6','wPawn7','wPawn8'],
+                ['wRook1','wKnight1','wBishop1','wQueen1',
+                'wKing','wBishop2','wKnight2','wRook2']]
+isGameOver=False
+isWTurn=True
+isBlackChecked=False
+isWhiteChecked=False
+rows=8
+cols=8
 # Initialize serial connection
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
