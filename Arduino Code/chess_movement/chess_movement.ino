@@ -58,6 +58,10 @@ void setup()
     digitalWrite(limit_col, HIGH);
 
     calibrate();
+    
+    while(1) {
+      hardcoded_demo();
+    }
 }
 
 void loop()
@@ -177,3 +181,82 @@ void calibrate()
 }
 
 int sign(int x) { return x < 0 ? -1 : 1; }
+
+
+void hardcoded_demo() {
+  row_motor.move_absolute(6 * STEPS_SQUARE);
+  col_motor.move_absolute(0 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  row_motor.move_absolute(4 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(1 * STEPS_SQUARE);
+  col_motor.move_absolute(5 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  row_motor.move_absolute(2 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(7 * STEPS_SQUARE);
+  col_motor.move_absolute(0 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  row_motor.move_absolute(5 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(0 * STEPS_SQUARE);
+  col_motor.move_absolute(4 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  move_diagonal(3,3);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(5 * STEPS_SQUARE);
+  col_motor.move_absolute(0 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  col_motor.move_absolute(7 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  // tada
+  calibrate();
+  
+  row_motor.move_absolute(5 * STEPS_SQUARE);
+  col_motor.move_absolute(7 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  col_motor.move_absolute(0 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(3 * STEPS_SQUARE);
+  col_motor.move_absolute(7 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  move_diagonal(-3,-3);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(5 * STEPS_SQUARE);
+  col_motor.move_absolute(0 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  row_motor.move_absolute(7 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(2 * STEPS_SQUARE);
+  col_motor.move_absolute(5 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  row_motor.move_absolute(1 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  row_motor.move_absolute(4 * STEPS_SQUARE);
+  col_motor.move_absolute(0 * STEPS_SQUARE);
+  
+  digitalWrite(magnet_pin, HIGH);
+  row_motor.move_absolute(6 * STEPS_SQUARE);
+  digitalWrite(magnet_pin, LOW);
+  
+  calibrate();
+}
+
