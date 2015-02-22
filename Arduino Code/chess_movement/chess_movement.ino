@@ -59,9 +59,9 @@ void setup()
 
     calibrate();
     
-    while(1) {
-      hardcoded_demo();
-    }
+//    while(1) {
+//      hardcoded_demo();
+//    }
 }
 
 void loop()
