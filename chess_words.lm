@@ -1,0 +1,93 @@
+Language model created by QuickLM on Sun Feb 22 02:06:35 EST 2015
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 17 sentences and 19 words
+
+\data\
+ngram 1=19
+ngram 2=34
+ngram 3=17
+
+\1-grams:
+-2.0086 1 -0.2218
+-2.0086 2 -0.2218
+-2.0086 3 -0.2218
+-2.0086 4 -0.2218
+-2.0086 5 -0.2218
+-2.0086 6 -0.2218
+-2.0086 7 -0.2218
+-2.0086 8 -0.2218
+-0.7782 </s> -0.3010
+-0.7782 <s> -0.2218
+-2.0086 AZKABAN -0.2218
+-2.0086 BUTTERBEER -0.2218
+-2.0086 CASTLE -0.2218
+-2.0086 CENTAUR -0.2218
+-2.0086 DEMENTOR -0.2218
+-2.0086 EXPELLIARMUS -0.2218
+-2.0086 FIREBOLT -0.2218
+-2.0086 GRYFFINDOR -0.2218
+-2.0086 HOGWARTS -0.2218
+
+\2-grams:
+-0.3010 1 </s> -0.3010
+-0.3010 2 </s> -0.3010
+-0.3010 3 </s> -0.3010
+-0.3010 4 </s> -0.3010
+-0.3010 5 </s> -0.3010
+-0.3010 6 </s> -0.3010
+-0.3010 7 </s> -0.3010
+-0.3010 8 </s> -0.3010
+-1.5315 <s> 1 0.0000
+-1.5315 <s> 2 0.0000
+-1.5315 <s> 3 0.0000
+-1.5315 <s> 4 0.0000
+-1.5315 <s> 5 0.0000
+-1.5315 <s> 6 0.0000
+-1.5315 <s> 7 0.0000
+-1.5315 <s> 8 0.0000
+-1.5315 <s> AZKABAN 0.0000
+-1.5315 <s> BUTTERBEER 0.0000
+-1.5315 <s> CASTLE 0.0000
+-1.5315 <s> CENTAUR 0.0000
+-1.5315 <s> DEMENTOR 0.0000
+-1.5315 <s> EXPELLIARMUS 0.0000
+-1.5315 <s> FIREBOLT 0.0000
+-1.5315 <s> GRYFFINDOR 0.0000
+-1.5315 <s> HOGWARTS 0.0000
+-0.3010 AZKABAN </s> -0.3010
+-0.3010 BUTTERBEER </s> -0.3010
+-0.3010 CASTLE </s> -0.3010
+-0.3010 CENTAUR </s> -0.3010
+-0.3010 DEMENTOR </s> -0.3010
+-0.3010 EXPELLIARMUS </s> -0.3010
+-0.3010 FIREBOLT </s> -0.3010
+-0.3010 GRYFFINDOR </s> -0.3010
+-0.3010 HOGWARTS </s> -0.3010
+
+\3-grams:
+-0.3010 <s> 1 </s>
+-0.3010 <s> 2 </s>
+-0.3010 <s> 3 </s>
+-0.3010 <s> 4 </s>
+-0.3010 <s> 5 </s>
+-0.3010 <s> 6 </s>
+-0.3010 <s> 7 </s>
+-0.3010 <s> 8 </s>
+-0.3010 <s> AZKABAN </s>
+-0.3010 <s> BUTTERBEER </s>
+-0.3010 <s> CASTLE </s>
+-0.3010 <s> CENTAUR </s>
+-0.3010 <s> DEMENTOR </s>
+-0.3010 <s> EXPELLIARMUS </s>
+-0.3010 <s> FIREBOLT </s>
+-0.3010 <s> GRYFFINDOR </s>
+-0.3010 <s> HOGWARTS </s>
+
+\end\
